@@ -1,0 +1,18 @@
+.footer {
+    color: white;
+    padding: 25px;
+    background: black;
+    background: -webkit-linear-gradient(to right, gray, black);
+    background: -webkit-linear-gradient(to right, gray, black);
+}
+
+.footer a {
+    text-decoration: none !important;
+    color: white;
+    padding: 10px;
+}
+
+.footer a:hover {
+    color: wheat;
+    border-bottom: 2px solid #c8ff00c9;
+}
