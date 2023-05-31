@@ -28,7 +28,7 @@ const CreateCategory = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("somthing went wrong in input form");
+      toast.error("something went wrong in input form");
     }
   };
 
@@ -73,10 +73,10 @@ const CreateCategory = () => {
   const handleDelete = async (pId) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/category/delete-category/${pId}`
+        `/api/v1/category/delete-category/${pId}`, {name}
       );
       if (data.success) {
-        toast.success(`category is deleted`);
+        toast.success(`${name} is deleted`);
 
         getAllCategory();
       } else {
@@ -143,8 +143,8 @@ const CreateCategory = () => {
             </div>
             <Modal
               onCancel={() => setVisible(false)}
-              footer={null}
-              visible={visible}
+              footer ={null}
+              visible ={visible}
             >
               <CategoryForm
                 value={updatedName}
