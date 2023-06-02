@@ -1,24 +1,39 @@
-import React from 'react'
-import Layout from './../../component/layout/Layout';
-import { useSearch } from '../../context/search';
-import { Col, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Layout from "../../component/layout/Layout";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { Col, Row } from "react-bootstrap";
 
-const Search = () => {
-    const navigate = useNavigate()
-    const [values, setValues] = useSearch();
+const CategoryProduct = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    if (params?.slug) getProductsByCat();
+  }, [params?.slug]);
+
+  const getProductsByCat = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v1/product/product-category/${params.slug}`
+      );
+      setProducts(data?.products);
+      setCategory(data?.category);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <Layout title={"Search results"}>
-      <div className="container">
-        <div className="text-center">
-          <h1>Search Results</h1>
-          <h6>
-            {values?.results.length < 1
-              ? "No Products Found"
-              : `Found ${values?.results.length}`}
-          </h6>
+    <Layout title={"Category-Product"}>
+      <div className="container mt-3">
+        <h4 className="text-center">Category - {category?.name}</h4>
+        <h6 className="text-center">{products?.length} result found </h6>
+        <div className="row">
+          <div className="col-md-12 offset-1">
           <Row className="d-flex flex-wrap">
-              {values.results.map((p) => (
+              {products?.map((p) => (
                 <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
                   <div className="card m-2 mb-3 d-flex flex-column h-100">
                     <img
@@ -48,10 +63,11 @@ const Search = () => {
                 </Col>
               ))}
             </Row>
+          </div>
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Search
+export default CategoryProduct;
