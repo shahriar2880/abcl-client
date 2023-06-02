@@ -6,9 +6,10 @@ import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../../component/price/Prices";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate() 
   const [products, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
@@ -162,13 +163,12 @@ const Home = () => {
                   <div className="card-body style={{ minWidth: '15rem', minHeight:'25rem'}}">
                     <h5 className="card-title">{p.name}</h5>
                     <p className="card-text">
-                      {p.description.slice(0, 40)}...{" "}
-                      <Link className="" style={{ textDecoration: "none" }}>
-                        See More...
-                      </Link>
+                      {p.description.slice(0, 40)}...
+                      {/* onClick={()=> navigate(`/product/${p.slug}`)} */}
                     </p>
                     <p className="card-text">{p.price}$</p>
-                    <div className="d-flex flex-column mt-2  w-100">
+                    <div className="d-flex flex-column mt-2 gap-2  w-100">
+                      <button className="btn btn-secondary" onClick={()=> navigate(`/product/${p.slug}`)}>More Details</button>
                       <button className="btn btn-secondary">Add To Cart</button>
                     </div>
                   </div>
@@ -176,10 +176,10 @@ const Home = () => {
               </Col>
             ))}
           </Row>
-          <div className="m-2 p-3">
+          <div className="m-2 p-3 text-center">
             {products && products.length < total && (
               <button
-                className="btn btn-warning"
+                className="btn btn-warning "
                 onClick={(e) => {
                   e.preventDefault();
                   setPage(page + 1);
