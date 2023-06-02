@@ -32,12 +32,12 @@ const CreateCategory = () => {
     }
   };
 
-  //get all cat
+  //get all category
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get("/api/v1/category/get-category");
-      if (data.success) {
-        setCategories(data.category);
+      if (data?.success) {
+        setCategories(data?.category);
       }
     } catch (error) {
       console.log(error);
@@ -48,6 +48,7 @@ const CreateCategory = () => {
   useEffect(() => {
     getAllCategory();
   }, []);
+
   //update category
   const handleUpdate = async (e) => {
     e.preventDefault();

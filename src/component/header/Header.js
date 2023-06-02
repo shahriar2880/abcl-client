@@ -4,6 +4,7 @@ import "./Header.css";
 import { GiShoppingCart } from "react-icons/gi";
 import { useAuth } from "../../context/auth";
 import { toast } from "react-hot-toast";
+import SearchInput from "../form/SearchInput";
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const handleLogOut = () => {
@@ -35,6 +36,7 @@ const Header = () => {
               <GiShoppingCart /> E-commerce App
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <SearchInput/>
               <li className="nav-item">
                 <Link to="/" className="nav-link">
                   Home

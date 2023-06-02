@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminMenu from "../../component/adminMenu/AdminMenu";
 import Layout from "../../component/layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
 
 const Product = () => {
   const [products, setProduct] = useState([]);
@@ -18,7 +19,7 @@ const Product = () => {
       toast.error("Something went wrong");
     }
   };
-  useState(() => {
+  useEffect(() => {
     getAllProducts();
   }, []);
     
@@ -69,7 +70,9 @@ const Product = () => {
           <div className="col-md-9">
             <h1 className="text-center">Products</h1>
             <div className="d-flex">
+              <Row className="d-flex">
               {products?.map((p) => (
+                <Col md={4}>
                 <Link
                   key={p._id}
                   to={`/dashboard/admin/product/${p.slug}`}
@@ -88,13 +91,18 @@ const Product = () => {
                     <div className="card-body">
                       <h5 className="card-title">{p.name}</h5>
                       <p className="card-text">
-                        {p.description.slice(0,100)}
+                    {p.description.slice(0, 100)}
+                    
                         {/* {button} */}
-                      </p>
+                  </p>
+                  <button className='btn btn-primary ms-1'>More Details</button>
+                    <button className='btn btn-secondary ms-1'>Add To Cart</button>
                     </div>
                   </div>
                 </Link>
+                </Col>
               ))}
+            </Row>
             </div>
             {/* {renderProductRows()} */}
           </div>
