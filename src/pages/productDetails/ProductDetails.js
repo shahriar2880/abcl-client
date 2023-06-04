@@ -6,7 +6,6 @@ import { Col, Row } from "react-bootstrap";
 
 const ProductDetails = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -64,19 +63,52 @@ const ProductDetails = () => {
         <h4>Similar Products</h4>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found!!</p>
-        )}
+              )}
+              {/* 
+              <Row className="d-flex flex-wrap">
+              {products?.map((p) => (
+                <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
+                  <div className="card m-2 mb-3 d-flex flex-column h-100">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top"
+                      alt={p.name}
+                    />
+                    <div className="card-body d-flex flex-column">
+                      <h5 className="card-title">{p.name}</h5>
+                      <p className="card-text flex-grow-1">
+                        {p.description.slice(0, 40)}...
+                      </p>
+                      <p className="card-text">{p.price}$</p>
+                      <div className="mt-auto">
+                        <button
+                          className="btn btn-secondary w-100"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          More Details
+                        </button>
+                        <button className="btn btn-secondary mt-2 w-100">
+                          Add To Cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+               */}
         <Row className="d-flex flex-wrap">
           {relatedProducts?.map((p) => (
-            <Col md={3} key={p._id}>
-              <div className="card m-2">
+            <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
+              <div className="card m-2 mb-3 d-flex flex-column h-100">
                 <img
                   src={`/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />
-                <div className="card-body style={{ minWidth: '15rem', minHeight:'25rem'}}">
+                <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">
+                  <p className="card-text flex-grow-1">
                     {p.description.slice(0, 40)}...
                     {/* onClick={()=> navigate(`/product/${p.slug}`)} */}
                   </p>

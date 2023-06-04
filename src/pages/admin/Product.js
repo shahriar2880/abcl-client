@@ -23,43 +23,6 @@ const Product = () => {
     getAllProducts();
   }, []);
     
-//   const button = (
-//     <button onClick={() => {
-//       alert("Are to sure?");
-//     }}>See more</button>
-//   );
-
-  //   const renderProductRows = () => {
-  //     const rows = [];
-  //     for (let i = 0; i < products.length; i += 3) {
-  //       const rowProducts = products.slice(i, i + 3);
-  //       rows.push(
-  //         <div className="d-flex flex-wrap product-container" key={i}>
-  //           {rowProducts.map((product) => (
-  //             <Link
-  //               key={product._id}
-  //               to={`/dashboard/admin/product/${product.slug}`}
-  //               className="product-link"
-  //             >
-  //               <div className="card m-2" style={{ width: "18rem" }}>
-  //                 <img
-  //                   src={`/api/v1/product/product-photo/${product._id}`}
-  //                   className="card-img-top"
-  //                   alt={product.name}
-  //                 />
-  //                 <div className="card-body">
-  //                   <h5 className="card-title">{product.name}</h5>
-  //                   <p className="card-text">{product.description}</p>
-  //                 </div>
-  //               </div>
-  //             </Link>
-  //           ))}
-  //         </div>
-  //       );
-  //     }
-  //     return rows;
-  //   };
-
   return (
     <Layout title={"Products"}>
       <div className="container-fluid m-3 p-3">
@@ -70,17 +33,40 @@ const Product = () => {
           <div className="col-md-9">
             <h1 className="text-center">Products</h1>
             <div className="d-flex">
-              <Row className="d-flex">
+              {/* 
+              <Row className="d-flex flex-wrap">
               {products?.map((p) => (
-                <Col md={4}>
+                <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
+                  <div className="card m-2 mb-3 d-flex flex-column h-100">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top"
+                      alt={p.name}
+                    />
+                    <div className="card-body d-flex flex-column">
+                      <h5 className="card-title">{p.name}</h5>
+                      <p className="card-text flex-grow-1">
+                        {p.description.slice(0, 40)}...
+                      </p>
+                      <p className="card-text">{p.price}$</p>
+                      
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+               */}
+              <Row className="d-flex flex-wrap">
+              {products?.map((p) => (
+                <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
                 <Link
                   key={p._id}
                   to={`/dashboard/admin/product/${p.slug}`}
                   className="product-link"
                 >
                   <div
-                    className="card m-2 "
-                    style={{ width: "18rem" }}
+                    className="card m-2 mb-3 d-flex flex-column h-100"
+                    
                     key={p._id}
                   >
                     <img
@@ -88,15 +74,15 @@ const Product = () => {
                       className="card-img-top"
                       alt={p.name}
                     />
-                    <div className="card-body">
+                    <div className="card-body d-flex flex-column">
                       <h5 className="card-title">{p.name}</h5>
-                      <p className="card-text">
+                      <p className="card-text flex-grow-1">
                     {p.description.slice(0, 100)}
                     
                         {/* {button} */}
                   </p>
-                  <button className='btn btn-primary ms-1'>More Details</button>
-                    <button className='btn btn-secondary ms-1'>Add To Cart</button>
+                  {/* <button className='btn btn-primary ms-1'>More Details</button>
+                    <button className='btn btn-secondary ms-1'>Add To Cart</button> */}
                     </div>
                   </div>
                 </Link>

@@ -21,3 +21,8 @@
     font-family: "roboto", sans-serif;
     letter-spacing: 3px;
 }
+
+.cart {
+    height: 20px;
+    width: 20px;
+}

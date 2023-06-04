@@ -1,0 +1,46 @@
+        .card {
+            background-color: #fff !important;
+            margin-left: 0;
+            margin-bottom: 10px !important;
+            border-radius: 5px !important;
+        }
+        
+        @media screen and (min-width: 1200px) {
+            .col-lg-8 div {
+                max-height: 100%;
+                max-width: 100%;
+            }
+            .col-lg-4 div {
+                /* Custom styles for large devices */
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+        /* Styles for medium devices */
+        
+        @media screen and (min-width: 576px) and (max-width: 1000px) {
+            .col-md-8 div {
+                /* Custom styles for medium devices */
+                max-height: 100%;
+                max-width: 100%;
+            }
+            .col-md-4 div {
+                /* Custom styles for medium devices */
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }
+        /* Styles for small devices */
+        
+        @media screen and (max-width: 575px) {
+            .col-sm-7 div {
+                /* Custom styles for small devices */
+                max-height: 100%;
+                max-width: 100%;
+            }
+            .col-sm-5 div {
+                /* Custom styles for small devices */
+                max-height: 100%;
+                max-width: 100%;
+            }
+        }

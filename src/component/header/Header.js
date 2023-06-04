@@ -6,7 +6,14 @@ import { useAuth } from "../../context/auth";
 import { toast } from "react-hot-toast";
 import SearchInput from "../form/SearchInput";
 import useCategory from "../../hooks/useCategory";
+import { useCart } from "../../context/cart";
+import { Badge, Space } from "antd";
+import {
+  ShoppingCartOutlined
+} from '@ant-design/icons';
+
 const Header = () => {
+  const [cart] = useCart();
   const [auth, setAuth] = useAuth();
   const categories = useCategory();
   const handleLogOut = () => {
@@ -34,11 +41,14 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div>
             <Link to="/" className="navbar-brand">
-              <GiShoppingCart /> E-commerce App
+              <GiShoppingCart /> ABCL IT
             </Link>
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <SearchInput/>
+            </div>
+            <div className="ms-auto mb-2 mb-lg-0 ">
+            <ul className="navbar-nav">
+              <SearchInput></SearchInput>
               <li className="nav-item">
                 <Link to="/" className="nav-link">
                   Home
@@ -70,17 +80,6 @@ const Header = () => {
                   ))}
                 </ul>
               </li>
-              {/* <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-              </li> */}
-              
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -133,12 +132,17 @@ const Header = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item">
-                <Link to="/cart" className="nav-link">
-                  Cart(0)
-                </Link>
+              <li className="nav-item pe-1">
+                <Badge count={cart?.length} showZero>
+                  <Link to="/cart" className="nav-link cart">
+                    
+                    <ShoppingCartOutlined />
+                  
+                  </Link>
+                </Badge>
               </li>
             </ul>
+            </div>
           </div>
         </div>
       </nav>
