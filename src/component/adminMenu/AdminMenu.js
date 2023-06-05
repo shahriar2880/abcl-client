@@ -13,6 +13,9 @@ const AdminMenu = () => {
           <Link to="/dashboard/admin/products" className="list-group-item list-group-item-action">
             Products
           </Link>
+          <Link to="/dashboard/admin/orders" className="list-group-item list-group-item-action">
+            Orders
+          </Link>
           <Link to="/dashboard/admin/create-product" className="list-group-item list-group-item-action">
             Create Product
           </Link>

@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../component/layout/Layout";
-import UserMenu from "../../component/userMenu/UserMenu";
-import { useAuth } from "../../context/auth";
+import AdminMenu from "../../component/adminMenu/AdminMenu";
+import moment from "moment";
+import { useAuth } from "../../context/auth.js";
 import axios from "axios";
-import moment from "moment/moment";
+import { Select } from "antd";
+import { Option } from "antd/es/mentions";
 
-const Orders = () => {
+const AdminOrders = () => {
+  const [status, setStatus] = useState([
+    "Not Process",
+    "Processing",
+    "Shipped",
+    "delivered",
+    "cancel",
+  ]);
+  //   const [changeStatus, setCHangeStatus] = useState("");
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/orders");
+      const { data } = await axios.get("/api/v1/auth/all-orders");
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -21,41 +31,36 @@ const Orders = () => {
     if (auth?.token) getOrders();
   }, [auth?.token]);
 
-  // Function to refresh moment time every minute
-  const refreshMomentTime = () => {
-    const updatedOrders = [...orders];
-    updatedOrders.forEach((o) => {
-      o.timeFromNow = moment(o?.createAt).fromNow();
-    });
-    setOrders(updatedOrders);
+  const handleChange = async (orderId, value) => {
+    try {
+      const { data } = await axios.put(`/api/v1/auth/order-status/${orderId}`, {
+        status: value,
+      });
+      getOrders();
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  useEffect(() => {
-    // Refresh moment time every minute
-    const interval = setInterval(refreshMomentTime, 60000);
-
-    return () => {
-      // Clean up the interval on component unmount
-      clearInterval(interval);
-    };
-  }, [orders]);
 
   const getUpdatedTime = (order) => {
     // Assuming your order object has an 'updatedAt' field
     return moment(order?.updatedAt).format("YYYY-MM-DD HH:mm:ss");
   };
   return (
-    <Layout title={"Dashboard - Orders"}>
+    <Layout>
       <div className="container-fluid p-3">
         <div className="row">
           <div className="col-md-3">
-            <UserMenu />
+            <AdminMenu />
           </div>
           <div className="col-md-9">
-            <h1 className="text-center">All Orders</h1>
+            <h1 className="text-center">All Order</h1>
             {orders?.map((o, i) => {
               return (
-                <div className="border border-2 rounded shadow mb-3"  key={o._id}>
+                <div
+                  className="border border-2 rounded shadow mb-3"
+                  key={o._id}
+                >
                   <table className="table text-center">
                     <thead>
                       <tr>
@@ -70,7 +75,19 @@ const Orders = () => {
                     <tbody>
                       <tr>
                         <td>{i + 1}</td>
-                        <td>{o?.status}</td>
+                        <td>
+                          <Select
+                            bordered={false}
+                            onChange={(value) => handleChange(o._id, value)}
+                            defaultValue={o?.status}
+                          >
+                            {status.map((s, i) => (
+                              <Option key={i} value={s}>
+                                {s}
+                              </Option>
+                            ))}
+                          </Select>
+                        </td>
                         <td>{o?.buyer?.name}</td>
                         {/* <td>{moment(o?.createAt).fromNow()}</td> */}
                         <td>{getUpdatedTime(o)}</td>
@@ -81,7 +98,7 @@ const Orders = () => {
                   </table>
                   <div className="container">
                     {o?.products?.map((p, i) => (
-                      <div className="row mb-2 p-3 card flex-row" key={p._id}>
+                      <div className="row mb-2  card flex-row" key={p._id}>
                         <div className="col-md-4">
                           <img
                             src={`/api/v1/product/product-photo/${p._id}`}
@@ -109,4 +126,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default AdminOrders;
