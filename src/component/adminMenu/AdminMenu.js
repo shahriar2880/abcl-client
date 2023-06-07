@@ -7,6 +7,9 @@ const AdminMenu = () => {
       <div className="text-center">
               <div className="list-group">
                   <h2>Admin Panel</h2>
+          <Link to="/dashboard/admin/myProfile" className="list-group-item list-group-item-action">
+            My Profile
+          </Link>
           <Link to="/dashboard/admin/create-category" className="list-group-item list-group-item-action">
             Create category
           </Link>
@@ -15,6 +18,9 @@ const AdminMenu = () => {
           </Link>
           <Link to="/dashboard/admin/orders" className="list-group-item list-group-item-action">
             Orders
+          </Link>
+          <Link to="/dashboard/admin/transactions" className="list-group-item list-group-item-action">
+            Report
           </Link>
           <Link to="/dashboard/admin/create-product" className="list-group-item list-group-item-action">
             Create Product

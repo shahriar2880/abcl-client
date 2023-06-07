@@ -32,6 +32,7 @@ const Product = () => {
           </div>
           <div className="col-md-9">
             <h1 className="text-center">Products</h1>
+
             <div className="d-flex">
               {/* 
               <Row className="d-flex flex-wrap">
@@ -57,7 +58,8 @@ const Product = () => {
             </Row>
                */}
               <Row className="d-flex flex-wrap">
-              {products?.map((p) => (
+                {products?.map((p) => (
+                
                 <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
                 <Link
                   key={p._id}
@@ -74,15 +76,15 @@ const Product = () => {
                       className="card-img-top"
                       alt={p.name}
                     />
-                    <div className="card-body d-flex flex-column">
+                        <div className="card-body d-flex flex-column">
+                        
                       <h5 className="card-title">{p.name}</h5>
                       <p className="card-text flex-grow-1">
                     {p.description.slice(0, 100)}
                     
                         {/* {button} */}
                   </p>
-                  {/* <button className='btn btn-primary ms-1'>More Details</button>
-                    <button className='btn btn-secondary ms-1'>Add To Cart</button> */}
+                  
                     </div>
                   </div>
                 </Link>
