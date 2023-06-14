@@ -3,10 +3,13 @@ import Layout from "../../component/layout/Layout";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Col, Row } from "react-bootstrap";
+import { toast } from "react-hot-toast";
+import { useCart } from "../../context/cart";
 
 const CategoryProduct = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
@@ -54,7 +57,16 @@ const CategoryProduct = () => {
                         >
                           More Details
                         </button>
-                        <button className="btn btn-secondary mt-2 w-100">
+                        <button className="btn btn-secondary mt-2 w-100"
+                        onClick={() => {
+                          setCart([...cart, p]);
+                          localStorage.setItem(
+                            "cart",
+                            JSON.stringify([...cart, p])
+                          );
+                          toast.success("Item Added to cart");
+                        }}
+                        >
                           Add To Cart
                         </button>
                       </div>

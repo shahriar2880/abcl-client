@@ -1,11 +1,5 @@
-.navbar {
-    font-family: "Poppins", sans-serif;
-    font-size: 17px;
-    line-height: 26px;
-    text-transform: uppercase;
-    box-shadow: 0 8px 6px -6px gray;
-    --webkit-box-shadow: 0 8px 6px -6px gray;
-    border-bottom: solid gray !important;
+/* .navbar {
+    
 }
 
 .nav-link {
@@ -25,4 +19,71 @@
 .cart {
     height: 20px;
     width: 20px;
+} */
+
+
+/* Header.css */
+
+.header {
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    line-height: 26px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px gray;
+    --webkit-box-shadow: 0 8px 6px -6px gray;
+    border-bottom: solid gray !important;
+    background: linear-gradient(to right, #4e54c8, #8f94fb) !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-link {
+    color: #333;
+}
+
+.nav-link:hover {
+    color: #777;
+}
+
+.dropdown-menu {
+    background-color: #abc5df;
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart .ant-badge-count {
+    background-color: #1890ff;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    top: -12px;
+    right: -10px;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+}
+
+.cart .nav-link:hover {
+    color: #1890ff;
+}
+
+.search-container {
+    width: auto;
 }

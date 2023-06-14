@@ -50,7 +50,7 @@ const Users = () => {
   };
   return (
     <Layout title={"Admin Profile"}>
-      <div className="container-fluid m-3 p-3">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
@@ -58,11 +58,12 @@ const Users = () => {
           <div className="col-md-9">
             <div>
               <h1>All Users</h1>
-              <table>
-                <thead>
+              <table className="all-user">
+                <thead className="user-th">
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Address</th>
                     <th>Role</th>
                     <th>Actions</th>
                   </tr>
@@ -72,15 +73,19 @@ const Users = () => {
                     <tr key={user._id}>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
+                      <td>{user.address}</td>
                       <td>{user.role === 1 ? "Admin" : "User"}</td>
                       <td>
                         <button onClick={() => deleteUser(user._id)}>
                           Delete
                         </button>
                         {!user.role && (
-                          <button onClick={() => makeAdmin(user._id)}>
+                          <>
+                          <span style={{ margin: ' 0 5px'}}></span> {/* Add a gap */}
+                            <button onClick={() => makeAdmin(user._id)}>
                             Make Admin
-                          </button>
+                            </button>
+                          </>
                         )}
                       </td>
                     </tr>

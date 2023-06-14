@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../component/layout/Layout";
 import { useAuth } from "../../context/auth";
 import { useCart } from "../../context/cart";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Cart.css";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import DropIn from "braintree-web-drop-in-react";
+import { BiCart } from "react-icons/bi";
 
 const Cart = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
+  const [products, setProduct] = useState([]);
   const [clientToken, setClientToken] = useState("");
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,7 +37,54 @@ const Cart = () => {
     }
   };
 
-  //delete item
+  const updatedProducts = async (productId) => {
+    try {
+      // Send a request to update the product quantity
+      await axios.post(`/api/product/update-product-quantity/${productId}`); // Replace with your API endpoint
+
+      // Update the product quantity in the component state
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        stock: prevProduct.stock - 1,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Delete item from the cart and increase product quantity
+
+  //Delete item from the cart and increase product quantity
+  //   const removeCartItem = (productId) => {
+  //     try {
+  //       const updatedCart = cart.filter((item) => item._id !== productId);
+  //       setCart(updatedCart);
+  //       localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+  //       // Increase the product quantity in the database
+  //       updateProductQuantity(productId, 1);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  const increaseQuantity = (productId, quantity) => {
+    try {
+      const updatedCart = cart.map((p) => {
+        if (p._id === productId) {
+          // Increase the quantity of the matching order item
+          return { ...p, quantity: p.quantity + quantity };
+        }
+        return p;
+      });
+
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const removeCartItem = (pid) => {
     try {
       let myCart = [...cart];
@@ -43,6 +92,7 @@ const Cart = () => {
       myCart.splice(index, 1);
       setCart(myCart);
       localStorage.setItem("cart", JSON.stringify(myCart));
+      updatedProducts(pid);
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +120,9 @@ const Cart = () => {
         nonce,
         cart,
       });
+      for (const p of cart) {
+        await updatedProducts(p._id);
+      }
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
@@ -95,6 +148,9 @@ const Cart = () => {
                     auth?.token ? "" : "please login to checkout"
                   }`
                 : " Your Cart Is Empty"}
+              <Link to="/">
+                Please add something into <BiCart />
+              </Link>
             </h4>
           </div>
           <div className="row">
@@ -104,20 +160,23 @@ const Cart = () => {
                   className="row mb-2 p-3 card flex-row"
                   style={{ backgroundColor: "white" }}
                 >
-                  <div className="col-md-5 col-sm-4">
+                  <div className="col-md-6 col-sm-4">
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />
                   </div>
-                  <div className="col-md-7 col-sm-8">
+                  <div className="col-md-6 col-sm-8">
                     <p>{p.name}</p>
                     <p>{p.description.substring(0, 30)}</p>
                     <p>Price : {p.price}</p>
+                    <p>Quantity: {p.quantity}</p>
                     <button
                       className="btn btn-danger"
-                      onClick={() => removeCartItem(p._id)}
+                      onClick={() => {
+                        removeCartItem(p._id);
+                      }}
                     >
                       Remove
                     </button>

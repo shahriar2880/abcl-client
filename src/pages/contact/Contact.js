@@ -1,38 +1,44 @@
-import React from 'react'
-import Layout from '../../component/layout/Layout'
-import "./Contact.css"
-import {BiMailSend,BiPhoneCall,BiSupport} from "react-icons/bi"
+import React from 'react';
+import Layout from '../../component/layout/Layout';
+import { BiMailSend, BiPhoneCall, BiSupport } from 'react-icons/bi';
+import './Contact.css';
 
 const Contact = () => {
   return (
     <Layout title="Contact us - E-Commerce Shop">
-      <div className="row contact-us ">
-        <div className="col-md-6 ">
+      <div className="contact-container">
+        {/* <div className="contact-image">
           <img
             src="/images/contact-us.jpeg"
             alt="contact-us"
-            style={{ width: "100%" }}
+            className="image"
           />
-        </div>
-        <div className="col-md-4">
-          <h1 className="bg-dark p-2 text-white text-center">CONTACT US</h1>
-          <p className="text-justify mt-2">
-            any query and info about product feel free to call anytime we 24X7
-            variable
+        </div> */}
+        <div className="contact-details">
+          <h1 className="contact-heading">CONTACT US</h1>
+          <p className="contact-text">
+            Have any questions or need more information about our products? Feel
+            free to reach out to us anytime. Our dedicated support team is
+            available 24/7 to assist you.
           </p>
-          <p className="mt-3">
-            <BiMailSend /> : www.help@ecommerceapp.com
-          </p>
-          <p className="mt-3">
-            <BiPhoneCall /> : 012-3456789
-          </p>
-          <p className="mt-3">
-            <BiSupport /> : 1800-0000-0000 (toll free)
-          </p>
+          <div className="contact-info">
+            <div className="contact-item">
+              <BiMailSend className="contact-icon" />
+              <p className="contact-info-text">Email: help@ecommerceapp.com</p>
+            </div>
+            <div className="contact-item">
+              <BiPhoneCall className="contact-icon" />
+              <p className="contact-info-text">Phone: 017-50827850</p>
+            </div>
+            <div className="contact-item">
+              <BiSupport className="contact-icon" />
+              <p className="contact-info-text">Toll-Free: 1800-0000-0000</p>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

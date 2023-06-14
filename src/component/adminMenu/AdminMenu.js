@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
   return (
@@ -7,25 +7,25 @@ const AdminMenu = () => {
       <div className="text-center">
               <div className="list-group">
                   <h2>Admin Panel</h2>
-          <Link to="/dashboard/admin/myProfile" className="list-group-item list-group-item-action">
+          <NavLink to="/dashboard/admin/myProfile" className="list-group-item list-group-item-action" activeClassName="active">
             My Profile
-          </Link>
-          <Link to="/dashboard/admin/create-category" className="list-group-item list-group-item-action">
+          </NavLink>
+          <NavLink to="/dashboard/admin/create-category" className="list-group-item list-group-item-action" activeClassName="active">
             Create category
-          </Link>
-          <Link to="/dashboard/admin/products" className="list-group-item list-group-item-action">
+          </NavLink>
+          <NavLink to="/dashboard/admin/products" className="list-group-item list-group-item-action" activeClassName="active">
             Products
-          </Link>
-          <Link to="/dashboard/admin/orders" className="list-group-item list-group-item-action">
+          </NavLink>
+          <NavLink to="/dashboard/admin/orders" className="list-group-item list-group-item-action" activeClassName="active">
             Orders
-          </Link>
-          <Link to="/dashboard/admin/transactions" className="list-group-item list-group-item-action">
+          </NavLink>
+          <NavLink to="/dashboard/admin/transactions" className="list-group-item list-group-item-action" activeClassName="active">
             Report
-          </Link>
-          <Link to="/dashboard/admin/create-product" className="list-group-item list-group-item-action">
+          </NavLink>
+          <NavLink to="/dashboard/admin/create-product" className="list-group-item list-group-item-action" activeClassName="active">
             Create Product
-          </Link>
-          <Link to="/dashboard/admin/users" className="list-group-item list-group-item-action">Users</Link>
+          </NavLink>
+          <NavLink to="/dashboard/admin/users" className="list-group-item list-group-item-action" activeClassName="active">Users</NavLink>
         </div>
       </div>
     </>

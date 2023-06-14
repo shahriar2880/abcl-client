@@ -1,8 +1,42 @@
-.contact-us {
-    margin: 0;
-    padding: 0;
-    height: 70vh;
+.about-us-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: left;
+    min-height: calc(100vh - 80px);
+    /* Adjust the value based on your header height */
+    padding: 20px;
+    box-sizing: border-box;
 }
+
+.about-us-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.about-us-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.vision-heading,
+.quality-heading,
+.service-heading,
+.security-heading,
+.delivery-heading {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.vision-text,
+.quality-text,
+.service-text,
+.security-text,
+.delivery-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* Rest of the CSS styles for headings and text */

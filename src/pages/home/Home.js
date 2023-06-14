@@ -9,7 +9,7 @@ import { Prices } from "../../component/price/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart";
 
-const Home = () => {
+const Home = ({ id }) => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
   const [products, setProduct] = useState([]);
@@ -118,7 +118,7 @@ const Home = () => {
   return (
     <Layout title="All Product - Best Offers">
       <div className="container-fluid row mt-3">
-        <div className="col-md-3">
+        <div className="col-md-3 home-1">
           <h5 className="text-center">Filter By Category</h5>
           <div className="d-flex flex-column ">
             {categories?.map((c) => (
@@ -150,67 +150,134 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="col-md-9">
+        <div className="col-md-9 home-2">
           {/* {JSON.stringify(radio, null, 4)} */}
           <h1 className="text-center">All Product</h1>
-          <Row className="d-flex flex-wrap">
-            {products?.map((p) => (
-              <Col
-                md={3}
-                key={p._id}
-                className="my-3"
-                style={{ width: "18rem" }}
-              >
-                <div className="card m-2 mb-3 d-flex flex-column h-100">
-                  <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body d-flex flex-column">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text flex-grow-1">
-                      {p.description.slice(0, 40)}...
-                    </p>
-                    <p className="card-text">{p.price}$</p>
-                    <div className="mt-auto">
-                      <button
-                        className="btn btn-secondary w-100"
-                        onClick={() => navigate(`/product/${p.slug}`)}
-                      >
-                        More Details
-                      </button>
-                      <button
-                        className="btn btn-secondary mt-2 w-100"
-                        onClick={() => {
-                          setCart([...cart, p]);
-                          localStorage.setItem(
-                            "cart",
-                            JSON.stringify([...cart, p])
-                          );
-                          toast.success("Item Added to cart");
-                        }}
-                      >
-                        Add To Cart
-                      </button>
+          <div className="d-flex flex-column">
+            <Row className="flex-wrap">
+            <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                className="active"
+                aria-current="true"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img src="/images/carousel-1.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
+              </div>
+              <div className="carousel-item">
+                <img src="/images/carousel-2.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
+              </div>
+              <div className="carousel-item">
+                <img src="/images/carousel-3.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
+              </div>
+            </div>
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Next</span>
+            </button>
+          </div>
+              {products?.map((p) => (
+                <Col md={4} key={p._id} className="my-3">
+                  
+                  <div className="card m-2 mb-3 d-flex flex-column h-100">
+                    <img
+                      src={`/api/v1/product/product-photo/${p._id}`}
+                      className="card-img-top"
+                      alt={p.name}
+                    />
+                    <div className="card-body d-flex flex-column">
+                      <h5 className="card-title">{p.name}</h5>
+                      <p className="card-text flex-grow-1">
+                        {p.description.slice(0, 40)}...
+                      </p>
+                      {/* <p className="card-text">
+                        {p.quantity > 0 ? (
+                          <span className="text-success">In Stock</span>
+                        ) : (
+                          <span className="text-danger">Out of Stock</span>
+                        )}
+                      </p> */}
+                      <p className="card-text">Price: {p.price}$</p>
+                      <div className="mt-auto">
+                        <button
+                          className="btn btn-secondary w-100"
+                          onClick={() => navigate(`/product/${p.slug}`)}
+                        >
+                          More Details
+                        </button>
+                        <button
+                          className="btn btn-secondary mt-2 w-100"
+                          onClick={() => {
+                            setCart([...cart, p]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          Add To Cart
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Col>
-            ))}
-          </Row>
-          <div className="m-2 p-3 text-center">
-            {products && products.length < total && (
-              <button
-                className="btn btn-warning "
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? "Loading ..." : "Load More"}
-              </button>
-            )}
+                </Col>
+              ))}
+            </Row>
+            <div className="m-2 p-3 text-center">
+              {products && products.length < total && (
+                <button
+                  className="btn btn-warning "
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPage(page + 1);
+                  }}
+                >
+                  {loading ? "Loading ..." : "Load More"}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>

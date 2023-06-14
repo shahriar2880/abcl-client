@@ -1,18 +1,26 @@
 .footer {
-    color: white;
-    padding: 25px;
-    background: black;
-    background: -webkit-linear-gradient(to right, gray, black);
-    background: -webkit-linear-gradient(to right, gray, black);
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+}
+
+.footer .t {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.footer .mt-3 {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .footer a {
-    text-decoration: none !important;
-    color: white;
-    padding: 10px;
+    color: #4c95ed;
+    text-decoration: none;
+    margin: 0 5px;
 }
 
 .footer a:hover {
-    color: wheat;
-    border-bottom: 2px solid #c8ff00c9;
+    text-decoration: underline;
 }

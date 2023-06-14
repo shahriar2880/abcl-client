@@ -1,9 +1,9 @@
-table {
+.all-user {
     width: 100%;
     border-collapse: collapse;
 }
 
-thead {
+.user-th {
     background-color: #eaeaea;
 }
 
