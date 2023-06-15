@@ -29,7 +29,7 @@ const TransReport = (props) => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/all-orders");
+      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/auth/all-orders");
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ const TransReport = (props) => {
   //get all product
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/product/get-product`);
+      const { data } = await axios.get(`https://abcl-server.vercel.app/api/v1/product/get-product`);
       console.log(products);
       setProduct(data.products);
     } catch (error) {

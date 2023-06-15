@@ -20,13 +20,13 @@ const UpdateProduct = () => {
     const [photo, setPhoto] = useState("");
     const [id, setId] = useState("");
 
-    //`/api/v1/product/get-product/${params.slug}`
+    //`https://abcl-server.vercel.app/api/v1/product/get-product/${params.slug}`
 
     //get single product
     const getSingleProduct = async () => {
         try {
             const { data } = await axios.get(
-                `/api/v1/product/get-product/${params.slug}`
+                `https://abcl-server.vercel.app/api/v1/product/get-product/${params.slug}`
             );
             if (data?.success) {
                 setId(data.product._id);
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
     //get all category
     const getAllCategory = async () => {
         try {
-            const { data } = await axios.get("/api/v1/category/get-category");
+            const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/category/get-category");
             if (data?.success) {
                 setCategories(data?.category);
             }
@@ -77,7 +77,7 @@ const UpdateProduct = () => {
             photo && productData.append("photo", photo);
             productData.append("category", category);
             const { data } = await axios.put(
-                `/api/v1/product/update-product/${id}`,
+                `https://abcl-server.vercel.app/api/v1/product/update-product/${id}`,
                 productData
             );
             if (data?.success) {
@@ -97,7 +97,7 @@ const UpdateProduct = () => {
         try {
             let answer = window.prompt("Are you sure want to delete this product")
             if (!answer) return
-            const { data } = await axios.delete(`/api/v1/product/delete-product/${id}`);
+            const { data } = await axios.delete(`https://abcl-server.vercel.app/api/v1/product/delete-product/${id}`);
             toast.success("Product Deleted Successfully");
             navigate("/dashboard/admin/products")
         } catch (error) {
@@ -157,7 +157,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`/api/v1/product/product-photo/${id}`}
+                      src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${id}`}
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"

@@ -22,7 +22,7 @@ const Search = () => {
                 <Col md={3} key={p._id} className="my-3" style={{ width: "18rem" }}>
                   <div className="card m-2 mb-3 d-flex flex-column h-100">
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />

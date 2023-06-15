@@ -101,7 +101,7 @@ const Cart = () => {
   //get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/product/braintree/token");
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -116,7 +116,7 @@ const Cart = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post("/api/v1/product/braintree/payment", {
+      const { data } = await axios.post("https://abcl-server.vercel.app/api/v1/product/braintree/payment", {
         nonce,
         cart,
       });
@@ -162,7 +162,7 @@ const Cart = () => {
                 >
                   <div className="col-md-6 col-sm-4">
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />

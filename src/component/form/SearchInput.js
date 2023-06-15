@@ -12,7 +12,7 @@ const SearchInput = () => {
         e.preventDefault();
         try {
           const { data } = await axios.get(
-            `/api/v1/product/search/${values.keyword}`
+            `https://abcl-server.vercel.app/api/v1/product/search/${values.keyword}`
           );
           setValues({ ...values, results: data });
           navigate("/search");

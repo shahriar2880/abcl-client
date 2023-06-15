@@ -23,7 +23,7 @@ const Home = ({ id }) => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/product/product-count");
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -39,7 +39,7 @@ const Home = ({ id }) => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`https://abcl-server.vercel.app/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProduct([...products, ...data?.products]);
     } catch (error) {
@@ -51,7 +51,7 @@ const Home = ({ id }) => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -70,7 +70,7 @@ const Home = ({ id }) => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`https://abcl-server.vercel.app/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProduct(data.products);
     } catch (error) {
@@ -105,7 +105,7 @@ const Home = ({ id }) => {
 
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/filters-product", {
+      const { data } = await axios.post("https://abcl-server.vercel.app/api/v1/product/filters-product", {
         checked,
         radio,
       });
@@ -222,7 +222,7 @@ const Home = ({ id }) => {
                   
                   <div className="card m-2 mb-3 d-flex flex-column h-100">
                     <img
-                      src={`/api/v1/product/product-photo/${p._id}`}
+                      src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                     />

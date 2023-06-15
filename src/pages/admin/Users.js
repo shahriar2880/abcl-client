@@ -19,7 +19,7 @@ const Users = () => {
    }
   const getUsers = async () => {
     try {
-      const response = await axios.get("/api/v1/auth/users");
+      const response = await axios.get("https://abcl-server.vercel.app/api/v1/auth/users");
       setUsers(response.data);
     } catch (error) {
       console.log(error);
@@ -29,7 +29,7 @@ const Users = () => {
 
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`/api/v1/auth/users/${userId}`);
+      await axios.delete(`https://abcl-server.vercel.app/api/v1/auth/users/${userId}`);
       getUsers();
       toast.success("User deleted successfully");
     } catch (error) {
@@ -40,7 +40,7 @@ const Users = () => {
 
   const makeAdmin = async (userId) => {
     try {
-      await axios.put(`/api/v1/auth/users/${userId}/make-admin`);
+      await axios.put(`https://abcl-server.vercel.app/api/v1/auth/users/${userId}/make-admin`);
       getUsers();
       toast.success("User role updated successfully");
     } catch (error) {
