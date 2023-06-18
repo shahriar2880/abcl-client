@@ -11,7 +11,7 @@ const Search = () => {
     <Layout title={"Search results"}>
       <div className="container">
         <div className="text-center">
-          <h1>Search Results</h1>
+          
           <h6>
             {values?.results.length < 1
               ? "No Products Found"
