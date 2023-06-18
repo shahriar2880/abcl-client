@@ -247,7 +247,7 @@ const Cart = () => {
                       onClick={handlePayment}
                       disabled={loading || !instance || !auth?.user?.address}
                     >
-                      {loading ? "Processing ...." : "Make Payment"}
+                      {loading ? "Processing ...." : "Place Order"}
                     </button>
                   </>
                 )}
