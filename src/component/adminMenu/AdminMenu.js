@@ -1,7 +1,8 @@
-import { UpOutlined } from "@ant-design/icons";
 import React from "react";
-import { BiCategory, BiUser, BiUserPlus } from "react-icons/bi";
-import { TbHandClick } from "react-icons/tb";
+import { BiCategory, BiUser} from "react-icons/bi";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+import {MdCreate} from "react-icons/md"
+import { TbHandClick, TbReportAnalytics, TbUserSearch } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
@@ -28,7 +29,7 @@ const AdminMenu = () => {
             className="list-group-item list-group-item-action"
             activeClassName="active"
           >
-           Products
+          <AiOutlineUnorderedList/> Products
           </NavLink>
           <NavLink
             to="/dashboard/admin/orders"
@@ -42,21 +43,21 @@ const AdminMenu = () => {
             className="list-group-item list-group-item-action"
             activeClassName="active"
           >
-            Analytics
+           <TbReportAnalytics/> Analytics
           </NavLink>
           <NavLink
             to="/dashboard/admin/create-product"
             className="list-group-item list-group-item-action"
             activeClassName="active"
           >
-            Create Product
+           <MdCreate/> Create Product
           </NavLink>
           <NavLink
             to="/dashboard/admin/users"
             className="list-group-item list-group-item-action"
             activeClassName="active"
           >
-            Users
+           <TbUserSearch/> Users
           </NavLink>
         </div>
       </div>
