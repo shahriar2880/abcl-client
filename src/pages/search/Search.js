@@ -3,9 +3,12 @@ import Layout from "./../../component/layout/Layout";
 import { useSearch } from "../../context/search";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { useCart } from "../../context/cart";
 
 const Search = () => {
   const navigate = useNavigate();
+  const [cart, setCart] = useCart();
   const [values, setValues] = useSearch();
   return (
     <Layout title={"Search results"}>
@@ -44,9 +47,23 @@ const Search = () => {
                       >
                         More Details
                       </button>
-                      <button className="btn btn-secondary mt-2 w-100">
-                        Add To Cart
-                      </button>
+                      <button
+                          className="btn btn-secondary mt-2 w-100"
+                          onClick={() => {
+                            const productWithQuantityOne = {
+                              ...p,
+                              quantity: 1,
+                            }; // Add quantity property with value 1
+                            setCart([...cart, productWithQuantityOne]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, productWithQuantityOne])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          Add To Cart
+                        </button>
                     </div>
                   </div>
                 </div>
