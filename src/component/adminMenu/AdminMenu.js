@@ -1,6 +1,7 @@
 import { UpOutlined } from "@ant-design/icons";
 import React from "react";
 import { BiCategory, BiUser, BiUserPlus } from "react-icons/bi";
+import { TbHandClick } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
@@ -34,7 +35,7 @@ const AdminMenu = () => {
             className="list-group-item list-group-item-action"
             activeClassName="active"
           >
-            Orders
+           <TbHandClick/> Orders
           </NavLink>
           <NavLink
             to="/dashboard/admin/transactions"

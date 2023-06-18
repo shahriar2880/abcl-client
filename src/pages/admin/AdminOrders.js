@@ -54,7 +54,6 @@ const AdminOrders = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9">
-            <h1 className="text-center">All Order</h1>
             {orders?.map((o, i) => {
               return (
                 <div
@@ -96,7 +95,7 @@ const AdminOrders = () => {
                       </tr>
                     </tbody>
                   </table>
-                  {/* <div className="container">
+                  <div className="container">
                     {o?.products?.map((p, i) => (
                       <div className="row mb-2  card flex-row" key={p._id}>
                         <div className="col-md-4">
@@ -104,8 +103,8 @@ const AdminOrders = () => {
                             src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
-                            width="100px"
-                            height="100px"
+                            width="40px"
+                            height="40px"
                           />
                         </div>
                         <div className="col-md-8">
@@ -115,7 +114,7 @@ const AdminOrders = () => {
                         </div>
                       </div>
                     ))}
-                  </div> */}
+                  </div>
                 </div>
               );
             })}
