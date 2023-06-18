@@ -171,7 +171,7 @@ const Cart = () => {
                     <p>{p.name}</p>
                     <p>{p.description.substring(0, 30)}</p>
                     <p>Price : {p.price}</p>
-                    <p>Quantity: {p.quantity}</p>
+                    
                     <button
                       className="btn btn-danger"
                       onClick={() => {

@@ -312,8 +312,8 @@ const Home = ({ id }) => {
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-between bg-primary w-100 p-2">
-        <div className="d-flex align-items-center gap-2">
+      <div className="d-flex justify-content-between bg-primary w-100 p-3">
+        <div className="d-flex align-items-center gap-2 ms-5">
           <CarOutlined />
           <div>
             <h4>FREE DELIVERY</h4>
@@ -334,10 +334,10 @@ const Home = ({ id }) => {
             <p>& Gift Note</p>
           </div>
         </div>
-        <div className="d-flex align-items-center gap-2">
+        <div className="d-flex align-items-center gap-2 me-5">
           <ContactsOutlined />
           <div>
-            <h4>CONTACT US</h4>
+            <h4>CONTACT WITH US</h4>
             <p>01608456891</p>
           </div>
         </div>
