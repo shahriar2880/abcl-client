@@ -1,0 +1,59 @@
+{
+    "success": true,
+    "message": "All Categories List",
+    "category": [{
+            "_id": "64766e797c92a841689b70a2",
+            "name": "Electronics",
+            "slug": "electronics",
+            "__v": 0
+        },
+        {
+            "_id": "64766e8b7c92a841689b70a7",
+            "name": "Computers",
+            "slug": "computers",
+            "__v": 0
+        },
+        {
+            "_id": "64766eb67c92a841689b70ac",
+            "name": "Women's Fashion",
+            "slug": "women's-fashion",
+            "__v": 0
+        },
+        {
+            "_id": "64766ec27c92a841689b70b1",
+            "name": "Men's Fashion",
+            "slug": "men's-fashion",
+            "__v": 0
+        },
+        {
+            "_id": "64766ee37c92a841689b70b6",
+            "name": "Girls' Fashion",
+            "slug": "girls'-fashion",
+            "__v": 0
+        },
+        {
+            "_id": "64766eeb7c92a841689b70bb",
+            "name": "Boys' Fashion",
+            "slug": "boys'-fashion",
+            "__v": 0
+        },
+        {
+            "_id": "64766f097c92a841689b70c0",
+            "name": "Health and Household",
+            "slug": "health-and-household",
+            "__v": 0
+        },
+        {
+            "_id": "64804a4944af21a8afa73c75",
+            "name": "Toys and Games",
+            "slug": "toys-and-games",
+            "__v": 0
+        },
+        {
+            "_id": "648b305cdaa943a2dba1a181",
+            "name": "Gift Items",
+            "slug": "gift-items",
+            "__v": 0
+        }
+    ]
+}

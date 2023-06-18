@@ -94,8 +94,9 @@ const ProductDetails = () => {
                     <div className="card-body d-flex flex-column">
                       <h5 className="card-title">{p.name}</h5>
                       <p className="card-text flex-grow-1">
-                        {p.description.slice(0, 40)}...
-                      </p>
+  {p.description && p.description.slice(0, 40) + '...'}
+</p>
+
                       <p className="card-text">{p.price}$</p>
                       <div className="mt-auto">
                         <button

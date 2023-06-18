@@ -81,6 +81,11 @@
     border-color: #ffa000;
 }
 
+.custom-carousel-control {
+    width: 40px;
+    /* Adjust the width as per your requirement */
+}
+
 @media (max-width: 768px) {
     .home-1 {
         margin-bottom: 20px;

@@ -8,6 +8,13 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../../component/price/Prices";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cart";
+import {
+  CarOutlined,
+  ContactsOutlined,
+  DeliveredProcedureOutlined,
+  GiftOutlined,
+} from "@ant-design/icons";
+import { GiCash, GiStorkDelivery } from "react-icons/gi";
 
 const Home = ({ id }) => {
   const navigate = useNavigate();
@@ -23,7 +30,9 @@ const Home = ({ id }) => {
   //getTOtal COunt
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/product/product-count");
+      const { data } = await axios.get(
+        "https://abcl-server.vercel.app/api/v1/product/product-count"
+      );
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -39,7 +48,9 @@ const Home = ({ id }) => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`https://abcl-server.vercel.app/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `https://abcl-server.vercel.app/api/v1/product/product-list/${page}`
+      );
       setLoading(false);
       setProduct([...products, ...data?.products]);
     } catch (error) {
@@ -51,7 +62,9 @@ const Home = ({ id }) => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/category/get-category");
+      const { data } = await axios.get(
+        "https://abcl-server.vercel.app/api/v1/category/get-category"
+      );
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -70,7 +83,9 @@ const Home = ({ id }) => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`https://abcl-server.vercel.app/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `https://abcl-server.vercel.app/api/v1/product/product-list/${page}`
+      );
       setLoading(false);
       setProduct(data.products);
     } catch (error) {
@@ -105,10 +120,13 @@ const Home = ({ id }) => {
 
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("https://abcl-server.vercel.app/api/v1/product/filters-product", {
-        checked,
-        radio,
-      });
+      const { data } = await axios.post(
+        "https://abcl-server.vercel.app/api/v1/product/filters-product",
+        {
+          checked,
+          radio,
+        }
+      );
       setProduct(data?.products);
     } catch (error) {
       console.log(error);
@@ -152,74 +170,69 @@ const Home = ({ id }) => {
         </div>
         <div className="col-md-9 home-2">
           {/* {JSON.stringify(radio, null, 4)} */}
-          <h1 className="text-center">All Product</h1>
+          {/* <h1 className="text-center">All Product</h1> */}
           <div className="d-flex flex-column">
             <Row className="flex-wrap">
-            <div
-            id="carouselExampleIndicators"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div className="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                className="active"
-                aria-current="true"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
-            </div>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img src="/images/carousel-1.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
+              <div
+                id="carouselExampleControlsNoTouching"
+                class="carousel slide"
+                data-bs-touch="false"
+                data-bs-interval="false"
+              >
+                <div className="carousel-inner">
+                  <div className="carousel-item active">
+                    <img
+                      src="/images/carousel-1.png"
+                      className="d-block"
+                      style={{ height: "200px", width: "100%" }}
+                      alt="..."
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src="/images/carousel-2.png"
+                      className="d-block"
+                      style={{ height: "200px", width: "100%" }}
+                      alt="..."
+                    />
+                  </div>
+                  <div className="carousel-item">
+                    <img
+                      src="/images/carousel-3.png"
+                      className="d-block"
+                      style={{ height: "200px", width: "100%" }}
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <button
+                  className="carousel-control-prev custom-carousel-control"
+                  type="button"
+                  data-bs-target="#carouselExampleControlsNoTouching"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button
+                  className="carousel-control-next custom-carousel-control"
+                  type="button"
+                  data-bs-target="#carouselExampleControlsNoTouching"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
               </div>
-              <div className="carousel-item">
-                <img src="/images/carousel-2.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
-              </div>
-              <div className="carousel-item">
-                <img src="/images/carousel-3.png" className="d-block" style={{height:'300px', width:"100%"}} alt="..." />
-              </div>
-            </div>
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Next</span>
-            </button>
-          </div>
+
               {products?.map((p) => (
                 <Col md={4} key={p._id} className="my-3">
-                  
                   <div className="card m-2 mb-3 d-flex flex-column h-100">
                     <img
                       src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
@@ -229,8 +242,9 @@ const Home = ({ id }) => {
                     <div className="card-body d-flex flex-column">
                       <h5 className="card-title">{p.name}</h5>
                       <p className="card-text flex-grow-1">
-                        {p.description.slice(0, 40)}...
+                        {p.description && p.description.slice(0, 40) + "..."}
                       </p>
+
                       {/* <p className="card-text">
                         {p.quantity > 0 ? (
                           <span className="text-success">In Stock</span>
@@ -246,13 +260,30 @@ const Home = ({ id }) => {
                         >
                           More Details
                         </button>
-                        <button
+                        {/* <button
                           className="btn btn-secondary mt-2 w-100"
                           onClick={() => {
                             setCart([...cart, p]);
                             localStorage.setItem(
                               "cart",
                               JSON.stringify([...cart, p])
+                            );
+                            toast.success("Item Added to cart");
+                          }}
+                        >
+                          Add To Cart
+                        </button> */}
+                        <button
+                          className="btn btn-secondary mt-2 w-100"
+                          onClick={() => {
+                            const productWithQuantityOne = {
+                              ...p,
+                              quantity: 1,
+                            }; // Add quantity property with value 1
+                            setCart([...cart, productWithQuantityOne]);
+                            localStorage.setItem(
+                              "cart",
+                              JSON.stringify([...cart, productWithQuantityOne])
                             );
                             toast.success("Item Added to cart");
                           }}
@@ -278,6 +309,36 @@ const Home = ({ id }) => {
                 </button>
               )}
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="d-flex justify-content-between bg-primary w-100 p-2">
+        <div className="d-flex align-items-center gap-2">
+          <CarOutlined />
+          <div>
+            <h4>FREE DELIVERY</h4>
+            <p>From Buy Item 60$</p>
+          </div>
+        </div>
+        <div className="d-flex align-items-center gap-2">
+          <GiCash />
+          <div>
+            <h4>CASH ON DELIVERY</h4>
+            <p>All Over Bangladesh</p>
+          </div>
+        </div>
+        <div className="d-flex align-items-center gap-2">
+          <GiftOutlined />
+          <div>
+            <h4>FREE GIFT BOX</h4>
+            <p>& Gift Note</p>
+          </div>
+        </div>
+        <div className="d-flex align-items-center gap-2">
+          <ContactsOutlined />
+          <div>
+            <h4>CONTACT US</h4>
+            <p>01608456891</p>
           </div>
         </div>
       </div>

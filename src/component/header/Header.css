@@ -32,7 +32,7 @@
     box-shadow: 0 8px 6px -6px gray;
     --webkit-box-shadow: 0 8px 6px -6px gray;
     border-bottom: solid gray !important;
-    background: linear-gradient(to right, #4e54c8, #8f94fb) !important;
+    background: linear-gradient(135deg, #788ae7, #ffc3a0);
 }
 
 .navbar-brand {
