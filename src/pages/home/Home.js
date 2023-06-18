@@ -14,7 +14,8 @@ import {
   DeliveredProcedureOutlined,
   GiftOutlined,
 } from "@ant-design/icons";
-import { GiCash, GiStorkDelivery } from "react-icons/gi";
+import { GiCash, GiCutDiamond, GiStorkDelivery } from "react-icons/gi";
+import { BiDiamond } from "react-icons/bi";
 
 const Home = ({ id }) => {
   const navigate = useNavigate();
@@ -167,6 +168,33 @@ const Home = ({ id }) => {
               Reset Filters
             </button>
           </div>
+          <h5 className="mt-4">
+            <GiCutDiamond /> BEST SELLING PRODUCTS
+          </h5>
+          {products?.slice(0, 5).map((p) => (
+            <div
+              key={p._id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                backgroundImage: "linear-gradient(to right, yellowgreen, skyblue)",
+                borderRadius: "3px",
+                marginBottom:"3px",
+                paddingLeft:"2px",
+                paddingBottom: "3px",
+              }}
+            >
+              <img
+                src={`https://abcl-server.vercel.app/api/v1/product/product-photo/${p._id}`}
+                alt=""
+                style={{ width: "40px", height: "40px", marginRight: "10px" }}
+              />
+              <div>
+                <h6>{p.name}</h6>
+                <p style={{ fontWeight: "bold" }}>Price: {p.price}$</p>
+              </div>
+            </div>
+          ))}
         </div>
         <div className="col-md-9 home-2">
           {/* {JSON.stringify(radio, null, 4)} */}
@@ -313,29 +341,37 @@ const Home = ({ id }) => {
         </div>
       </div>
       <div className="d-flex justify-content-between bg-primary w-100 p-3">
-        <div className="d-flex align-items-center gap-2 ms-5">
-          <CarOutlined />
+        <div className="d-flex align-items-center justify-content-between gap-2 ms-5">
+          <h1>
+            <CarOutlined />
+          </h1>
           <div>
             <h4>FREE DELIVERY</h4>
             <p>From Buy Item 60$</p>
           </div>
         </div>
-        <div className="d-flex align-items-center gap-2">
-          <GiCash />
+        <div className="d-flex align-items-center justify-content-between gap-2">
+          <h1>
+            <GiCash />
+          </h1>
           <div>
             <h4>CASH ON DELIVERY</h4>
             <p>All Over Bangladesh</p>
           </div>
         </div>
-        <div className="d-flex align-items-center gap-2">
-          <GiftOutlined />
+        <div className="d-flex align-items-center justify-content-between gap-2">
+          <h1>
+            <GiftOutlined />
+          </h1>
           <div>
             <h4>FREE GIFT BOX</h4>
             <p>& Gift Note</p>
           </div>
         </div>
-        <div className="d-flex align-items-center gap-2 me-5">
-          <ContactsOutlined />
+        <div className="d-flex align-items-center justify-content-between gap-2 me-5">
+          <h1>
+            <ContactsOutlined />
+          </h1>
           <div>
             <h4>CONTACT WITH US</h4>
             <p>01608456891</p>
