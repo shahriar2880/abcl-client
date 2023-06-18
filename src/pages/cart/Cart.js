@@ -176,6 +176,7 @@ const Cart = () => {
                       className="btn btn-danger"
                       onClick={() => {
                         removeCartItem(p._id);
+                        toast.success("Item removed from cart");
                       }}
                     >
                       Remove
