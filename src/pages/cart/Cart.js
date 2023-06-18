@@ -201,6 +201,7 @@ const Cart = () => {
                     >
                       Update Address
                     </button>
+                    <h1>Make a Payment</h1>
                   </div>
                 </>
               ) : (
