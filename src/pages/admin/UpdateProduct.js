@@ -23,88 +23,87 @@ const UpdateProduct = () => {
     //`https://abcl-server.vercel.app/api/v1/product/get-product/${params.slug}`
 
     //get single product
-    const getSingleProduct = async () => {
-        try {
-            const { data } = await axios.get(
-                `https://abcl-server.vercel.app/api/v1/product/get-product/${params.slug}`
-            );
-            if (data?.success) {
-                setId(data.product._id);
-                setName(data.product.name);
-                setDescription(data.product.description);
-                setPrice(data.product.price);
-                setCategory(data.product.category._id);
-                setShipping(data.product.shipping);
-                setQuantity(data.product.quantity);
-            }
-        } catch (error) {
-            console.log(error);
-            toast.error("Something went wrong in getting category");
-        }
-    };
+  const getSingleProduct = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://abcl-server.vercel.app/api/v1/product/get-product/${params.slug}`
+      );
+      setName(data.product.name);
+      setId(data.product._id);
+      setDescription(data.product.description);
+      setPrice(data.product.price);
+      setPrice(data.product.price);
+      setQuantity(data.product.quantity);
+      setShipping(data.product.shipping);
+      setCategory(data.product.category._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getSingleProduct();
+    //eslint-disable-next-line
+  }, []);
 
-    useEffect(() => {
-        getSingleProduct();
-        //eslint-disable-next-line
-    }, []);
+  //get all category
+  const getAllCategory = async () => {
+    try {
+      const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/category/get-category");
+      if (data?.success) {
+        setCategories(data?.category);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong in getting category");
+    }
+  };
 
-    //get all category
-    const getAllCategory = async () => {
-        try {
-            const { data } = await axios.get("https://abcl-server.vercel.app/api/v1/category/get-category");
-            if (data?.success) {
-                setCategories(data?.category);
-            }
-        } catch (error) {
-            console.log(error);
-            toast.error("Something went wrong in getting category");
-        }
-    };
+  useEffect(() => {
+    getAllCategory();
+  }, []);
 
-    useEffect(() => {
-        getAllCategory();
-    }, []);
-
-    //update product
-    const handleUpdate = async (e) => {
-        e.preventDefault();
-        try {
-            const productData = new FormData();
-            productData.append("name", name);
-            productData.append("description", description);
-            productData.append("price", price);
-            productData.append("quantity", quantity);
-            photo && productData.append("photo", photo);
-            productData.append("category", category);
-            const { data } = await axios.put(
-                `https://abcl-server.vercel.app/api/v1/product/update-product/${id}`,
-                productData
-            );
-            if (data?.success) {
-                toast.error(data?.message);
-            } else {
-                toast.success("Product Updated Successfully");
-                navigate("/dashboard/admin/products")
-            }
-        } catch (error) {
-            console.log(error);
-            toast.success("Product Updated Successfully");
-        }
-    };
+    //create product function
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const productData = new FormData();
+      productData.append("name", name);
+      productData.append("description", description);
+      productData.append("price", price);
+      productData.append("quantity", quantity);
+      photo && productData.append("photo", photo);
+      productData.append("category", category);
+      const { data } = axios.put(
+        `https://abcl-server.vercel.app/api/v1/product/update-product/${id}`,
+        productData
+      );
+      if (data?.success) {
+        toast.error(data?.message);
+      } else {
+        toast.success("Product Updated Successfully");
+        navigate("/dashboard/admin/products");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("something went wrong");
+    }
+  };
     
-    //delete product
-    const handleDelete = async () => {
-        try {
-            let answer = window.prompt("Are you sure want to delete this product")
-            if (!answer) return
-            const { data } = await axios.delete(`https://abcl-server.vercel.app/api/v1/product/delete-product/${id}`);
-            toast.success("Product Deleted Successfully");
-            navigate("/dashboard/admin/products")
-        } catch (error) {
-            console.log(error);
-            toast.error("something went wrong!!");
-        }
-    };
+    //delete a product
+  const handleDelete = async () => {
+    try {
+      let answer = window.prompt("Are You Sure want to delete this product ? ");
+      if (!answer) return;
+      const { data } = await axios.delete(
+        `https://abcl-server.vercel.app/api/v1/product/delete-product/${id}`
+      );
+      toast.success("Product Deleted Successfully");
+      navigate("/dashboard/admin/products");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
   return (
     <Layout title={"Update Product"}>
       <div className="container-fluid m-3 p-3">
