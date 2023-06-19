@@ -168,7 +168,7 @@ const Home = ({ id }) => {
               Reset Filters
             </button>
           </div>
-          <h5 className="mt-4">
+          {/* <h5 className="mt-4">
             <GiCutDiamond /> BEST SELLING PRODUCTS
           </h5>
           {products?.slice(0, 5).map((p) => (
@@ -194,7 +194,7 @@ const Home = ({ id }) => {
                 <p style={{ fontWeight: "bold" }}>Price: {p.price}$</p>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
         <div className="col-md-9 home-2">
           {/* {JSON.stringify(radio, null, 4)} */}
@@ -288,7 +288,7 @@ const Home = ({ id }) => {
                         >
                           More Details
                         </button>
-                        {/* <button
+                        <button
                           className="btn btn-secondary mt-2 w-100"
                           onClick={() => {
                             setCart([...cart, p]);
@@ -300,24 +300,8 @@ const Home = ({ id }) => {
                           }}
                         >
                           Add To Cart
-                        </button> */}
-                        <button
-                          className="btn btn-secondary mt-2 w-100"
-                          onClick={() => {
-                            const productWithQuantityOne = {
-                              ...p,
-                              quantity: 1,
-                            }; // Add quantity property with value 1
-                            setCart([...cart, productWithQuantityOne]);
-                            localStorage.setItem(
-                              "cart",
-                              JSON.stringify([...cart, productWithQuantityOne])
-                            );
-                            toast.success("Item Added to cart");
-                          }}
-                        >
-                          Add To Cart
                         </button>
+                        
                       </div>
                     </div>
                   </div>

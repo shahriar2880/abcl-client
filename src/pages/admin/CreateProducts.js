@@ -18,6 +18,7 @@ const CreateProducts = () => {
   const [shipping, setShipping] = useState("");
   const [photo, setPhoto] = useState("");
 
+  // https://abcl-server.vercel.app
   //get all category
   const getAllCategory = async () => {
     try {
@@ -35,40 +36,40 @@ const CreateProducts = () => {
     getAllCategory();
   }, []);
 
-  //create product function
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    try {
-      const productData = new FormData();
-      productData.append("name", name);
-      productData.append("description", description);
-      productData.append("price", price);
-      productData.append("quantity", quantity);
-      productData.append("photo", photo);
-      productData.append("category", category);
-      const { data } = axios.post(
-        "https://abcl-server.vercel.app/api/v1/product/create-product",
-        productData
-      );
-      if (data?.success) {
-        toast.error(data?.message);
-      } else {
-        toast.success("Product Created Successfully");
-        navigate("/dashboard/admin/products");
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("something went wrong");
+ //create product function
+ const handleCreate = async (e) => {
+  e.preventDefault();
+  try {
+    const productData = new FormData();
+    productData.append("name", name);
+    productData.append("description", description);
+    productData.append("price", price);
+    productData.append("quantity", quantity);
+    productData.append("photo", photo);
+    productData.append("category", category);
+    const { data } = axios.post(
+      "https://abcl-server.vercel.app/api/v1/product/create-product",
+      productData
+    );
+    if (data?.success) {
+      toast.error(data?.message);
+    } else {
+      toast.success("Product Created Successfully");
+      navigate("/dashboard/admin/products");
     }
-  };
+  } catch (error) {
+    console.log(error);
+    toast.error("something went wrong");
+  }
+};
   return (
-    <Layout title={"Create Product"}>
-      <div className="container-fluid m-3 p-3">
+    <Layout title={"Dashboard - Create Product"}>
+      <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
           <div className="col-md-3">
             <AdminMenu />
           </div>
-          <div className="col-md-9 mt-5">
+          <div className="col-md-9">
             <h1>Create Product</h1>
             <div className="m-1 w-75">
               <Select
