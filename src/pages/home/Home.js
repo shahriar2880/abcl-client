@@ -168,7 +168,7 @@ const Home = ({ id }) => {
               Reset Filters
             </button>
           </div>
-          {/* <h5 className="mt-4">
+          <h5 className="mt-4">
             <GiCutDiamond /> BEST SELLING PRODUCTS
           </h5>
           {products?.slice(0, 5).map((p) => (
@@ -194,7 +194,7 @@ const Home = ({ id }) => {
                 <p style={{ fontWeight: "bold" }}>Price: {p.price}$</p>
               </div>
             </div>
-          ))} */}
+          ))}
         </div>
         <div className="col-md-9 home-2">
           {/* {JSON.stringify(radio, null, 4)} */}
