@@ -71,6 +71,7 @@ const Profile = () => {
                     id="exampleInputEmail1"
                     placeholder="Enter Your Name"
                     autoFocus
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -102,6 +103,7 @@ const Profile = () => {
                     className="form-control"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Phone"
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -112,6 +114,7 @@ const Profile = () => {
                     className="form-control"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Address"
+                    required
                   />
                 </div>
 

@@ -69,6 +69,7 @@ const AdminProfile = () => {
                     id="exampleInputEmail1"
                     placeholder="Enter Your Name"
                     autoFocus
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -100,6 +101,7 @@ const AdminProfile = () => {
                     className="form-control"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Phone"
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -110,6 +112,7 @@ const AdminProfile = () => {
                     className="form-control"
                     id="exampleInputEmail1"
                     placeholder="Enter Your Address"
+                    required
                   />
                 </div>
 
