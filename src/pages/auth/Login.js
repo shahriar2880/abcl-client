@@ -3,7 +3,7 @@ import "./Login.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Layout from "../../component/layout/Layout";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 
 const Login = () => {
@@ -71,8 +71,8 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-3">
-            <button
+          <div className="text-center pt-1 mb-2 pb-1">
+            {/* <button
               type="submit"
               className="w-100 btn btn-primary"
               onClick={() => {
@@ -80,11 +80,19 @@ const Login = () => {
               }}
             >
               Forgot Password
-            </button>
+            </button> */}
+            <Link to={"/forgot-password"}>Forgot Password?</Link>
           </div>
           <button type="submit" className="w-100 btn btn-primary">
             Login
           </button>
+
+          <div className="d-flex flex-row align-items-center justify-content-center pb-2 mb-2">
+              <p className="mt-2">Don't have an account?</p>
+              <Link to={"/register"} className=''>
+                Register
+              </Link>
+            </div>
         </form>
       </div>
     </Layout>

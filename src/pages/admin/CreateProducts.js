@@ -97,6 +97,7 @@ const CreateProducts = () => {
                     accept="image/*"
                     onChange={(e) => setPhoto(e.target.files[0])}
                     hidden
+                    required
                   />
                 </label>
               </div>
@@ -119,6 +120,7 @@ const CreateProducts = () => {
                   placeholder="write a name"
                   className="form-control"
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -128,6 +130,7 @@ const CreateProducts = () => {
                   placeholder="write a description"
                   className="form-control"
                   onChange={(e) => setDescription(e.target.value)}
+                  required
                 />
               </div>
 
@@ -138,6 +141,7 @@ const CreateProducts = () => {
                   placeholder="write a Price"
                   className="form-control"
                   onChange={(e) => setPrice(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -147,6 +151,7 @@ const CreateProducts = () => {
                   placeholder="write a quantity"
                   className="form-control"
                   onChange={(e) => setQuantity(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -159,6 +164,7 @@ const CreateProducts = () => {
                   onChange={(value) => {
                     setShipping(value);
                   }}
+                  
                 >
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
