@@ -16,10 +16,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://abcl-server.vercel.app/api/v1/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://abcl-server.vercel.app/api/v1/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       if (res && res.data.success) {
         toast.success(res.data.message);
         setAuth({
@@ -83,16 +86,40 @@ const Login = () => {
             </button> */}
             <Link to={"/forgot-password"}>Forgot Password?</Link>
           </div>
-          <button type="submit" className="w-100 btn btn-primary">
+          <button
+            type="submit"
+            className="w-100 btn btn-primary rounded-2"
+            style={{
+              backgroundImage: "linear-gradient(to right, #ff6a00, #ee0979)",
+              color: "white",
+              border: "1px solid white",
+              transition: "color 0.3s ease-in-out",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "black")}
+            onMouseLeave={(e) => (e.target.style.color = "white")}
+          >
             Login
           </button>
 
-          <div className="d-flex flex-row align-items-center justify-content-center pb-2 mb-2">
-              <p className="mt-2">Don't have an account?</p>
-              <Link to={"/register"} className=''>
-                Register
-              </Link>
-            </div>
+          <div className="d-flex align-items-center justify-content-center pb-2 mb-2">
+            <p className="mt-2">Don't have an account?</p>
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+              className="btn btn-outline-light rounded-2 w-auto"
+              style={{
+                backgroundImage: "linear-gradient(to right, #ff6a00, #ee0979)",
+                color: "white",
+                border: "1px solid white",
+                transition: "color 0.3s ease-in-out",
+              }}
+              onMouseOver={(e) => (e.target.style.color = "black")}
+              onMouseLeave={(e) => (e.target.style.color = "white")}
+            >
+              Register
+            </button>
+          </div>
         </form>
       </div>
     </Layout>
