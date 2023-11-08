@@ -5,7 +5,7 @@ import "./Footer.css"
 const Footer = () => {
   return (
     <div className=" footer bg-dark text-light p-3">
-      <h4 className="text-center t">All Right Reserved &copy; Shahriar_Reza</h4>
+      <h4 className="text-center t">All Right Reserved &copy; ABCL</h4>
           <p className="text-center mt-3">
               <Link to="/about">About</Link>|
               <Link to="/contact">Contact</Link>|
