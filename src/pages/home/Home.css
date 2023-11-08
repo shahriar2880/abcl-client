@@ -93,3 +93,30 @@
         align-items: flex-start;
     }
 }
+
+/* Default styles for the parent container */
+.d-flex.justify-content-between.bg-primary.w-100.p-3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Common styles for each item */
+.d-flex.align-items-center.justify-content-between.gap-2 {
+  flex: 1;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff; /* Add a white background color */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+/* Adjust styles for small screens */
+@media (max-width: 768px) {
+  .d-flex.justify-content-between.bg-primary.w-100.p-3 {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .d-flex.align-items-center.justify-content-between.gap-2 {
+    width: 100%; /* Full width for small screens */
+  }
+}
